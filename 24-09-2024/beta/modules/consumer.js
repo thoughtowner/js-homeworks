@@ -25,18 +25,6 @@ const ConsumerNamespace = {
                 return true;
             }
         }
-    
-        // addProduct(shop, product, quantity) {
-        //     if (AuxiliaryFunctionsNamespace.addSomeProductQuantity(this.products, 'корзина', product, quantity)) {
-        //         shop.deleteSomeProductQuantity(product, quantity);
-        //     }
-        // }
-    
-        // deleteProduct(shop, product, quantity) {
-        //     if (AuxiliaryFunctionsNamespace.deleteSomeProductQuantity(this.products, 'корзина', product, quantity)) {
-        //         shop.addSomeProductQuantity(product, quantity);
-        //     }
-        // }
 
         putProduct(shop, product, quantity) {
             let isExists = false;
