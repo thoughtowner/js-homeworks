@@ -12,17 +12,13 @@ const ConsumerNamespace = {
         }
     
         deductMoney(money) {
-            if (money === this.money) {
-                this.money = 0;
-                console.log(`Покупатель ${this.name} отдал все деньги`);
-                return true;
-            } else if (money > this.money) {
-                console.log(`Покупатель ${this.name} не может отдать ${money} денег, т.к. отдаваемое количество денег больше имеющегося (${this.money}) у покупателя`);
-                return false;
-            } else {
+            if (this.money >= money) {
                 this.money -= money;
                 console.log(`Покупатель ${this.name} отдал ${money} денег. Итого: ${this.money}`);
                 return true;
+            } else {
+                console.log(`Покупатель ${this.name} не может отдать ${money} денег, т.к. отдаваемое количество денег больше имеющегося (${this.money}) у покупателя`);
+                return false;
             }
         }
 
@@ -93,10 +89,8 @@ const ConsumerNamespace = {
             if (this.deductMoney(totalCost)) {
                 for (let i = 0; i < this.products.length; i++) {
                     for (let j = 0; j < shop.products.length; j++) {
-                        if (this.products[i]['title'] === shop.products[j]['title']) {
-                            shop.products[j]['totalQuantity'] -= this.products[i]['quantity'];
-                            shop.products[j]['quantityInBasket'] -= this.products[i]['quantity'];
-                        }
+                        shop.products[j]['totalQuantity'] -= this.products[i]['quantity'];
+                        shop.products[j]['quantityInBasket'] -= this.products[i]['quantity'];
                     }
                 }
                 this.products.splice(0, this.products.length);
